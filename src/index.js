@@ -1,13 +1,12 @@
-const apiKey = "df49e55ca909653a425f7f678af2e81b";
 const temperature = document.querySelector(".temperature");
 const form = document.getElementById("form");
 const input = document.getElementById("keyword");
 const weatherIcon = document.getElementById("weather-icon");
 const cityName = document.querySelector(".city");
 
-const searchWeather = (city) => {
+const fetchWeatherData = (city) => {
 	fetch(
-		`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`
+		`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${process.env.API_KEY}`
 	)
 		.then((response) => response.json())
 		.then((data) => {
@@ -22,9 +21,9 @@ const searchWeather = (city) => {
 		});
 };
 
-searchWeather("London");
+fetchWeatherData("London");
 
 form.addEventListener("submit", (event) => {
 	event.preventDefault();
-	searchWeather(input.value);
+	fetchWeatherData(input.value);
 });
