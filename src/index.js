@@ -10,7 +10,7 @@ const fetchWeatherData = (city) => {
 	)
 		.then((response) => response.json())
 		.then((data) => {
-			console.log(data);
+			// console.log(data);
 			const city = data.name;
 			const temp = data.main.temp;
 			const iconcode = data.weather[0].icon;
